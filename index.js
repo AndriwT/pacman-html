@@ -8,8 +8,8 @@
 //when eat fruit, can eat ghost
 
 class PacMan {
-  x = 0;
-  y = 60;
+  x = 180;
+  y = 280;
   height = 20;
   width = 20;
 }
@@ -34,6 +34,12 @@ let wallPositions = [
   { x: wallSize * 7, y: 0 },
   { x: wallSize * 8, y: 0 },
   { x: wallSize * 9, y: 0 },
+  { x: wallSize * 9, y: wallSize },
+  { x: wallSize * 9, y: wallSize * 2 },
+  { x: wallSize * 9, y: wallSize * 3 },
+  { x: wallSize * 10, y: wallSize },
+  { x: wallSize * 10, y: wallSize * 2 },
+  { x: wallSize * 10, y: wallSize * 3 },
   { x: wallSize * 10, y: 0 },
   { x: wallSize * 11, y: 0 },
   { x: wallSize * 12, y: 0 },
@@ -44,13 +50,216 @@ let wallPositions = [
   { x: wallSize * 17, y: 0 },
   { x: wallSize * 18, y: 0 },
   { x: wallSize * 19, y: 0 },
+
+  { x: 0, y: 0 },
+  { x: wallSize, y: wallSize * 19 },
+  { x: wallSize * 2, y: wallSize * 19 },
+  { x: wallSize * 3, y: wallSize * 19 },
+  { x: wallSize * 4, y: wallSize * 19 },
+  { x: wallSize * 5, y: wallSize * 19 },
+  { x: wallSize * 6, y: wallSize * 19 },
+  { x: wallSize * 7, y: wallSize * 19 },
+  { x: wallSize * 8, y: wallSize * 19 },
+  { x: wallSize * 9, y: wallSize * 19 },
+  { x: wallSize * 10, y: wallSize * 19 },
+  { x: wallSize * 11, y: wallSize * 19 },
+  { x: wallSize * 12, y: wallSize * 19 },
+  { x: wallSize * 13, y: wallSize * 19 },
+  { x: wallSize * 14, y: wallSize * 19 },
+  { x: wallSize * 15, y: wallSize * 19 },
+  { x: wallSize * 16, y: wallSize * 19 },
+  { x: wallSize * 17, y: wallSize * 19 },
+  { x: wallSize * 18, y: wallSize * 19 },
+  { x: wallSize * 19, y: wallSize * 19 },
+
   { x: wallSize * 19, y: wallSize },
   { x: wallSize * 19, y: wallSize * 2 },
   { x: wallSize * 19, y: wallSize * 3 },
   { x: wallSize * 19, y: wallSize * 4 },
   { x: wallSize * 19, y: wallSize * 5 },
   { x: wallSize * 19, y: wallSize * 6 },
-  { x: wallSize * 5, y: 60 },
+  { x: wallSize * 19, y: wallSize * 7 },
+  { x: wallSize * 18, y: wallSize * 7 },
+  { x: wallSize * 17, y: wallSize * 7 },
+  { x: wallSize * 16, y: wallSize * 7 },
+  { x: wallSize * 19, y: wallSize * 8 },
+  { x: wallSize * 18, y: wallSize * 8 },
+  { x: wallSize * 17, y: wallSize * 8 },
+  { x: wallSize * 16, y: wallSize * 8 },
+  { x: wallSize * 19, y: wallSize * 10 },
+  { x: wallSize * 18, y: wallSize * 10 },
+  { x: wallSize * 17, y: wallSize * 10 },
+  { x: wallSize * 16, y: wallSize * 10 },
+  { x: wallSize * 19, y: wallSize * 11 },
+  { x: wallSize * 18, y: wallSize * 11 },
+  { x: wallSize * 17, y: wallSize * 11 },
+  { x: wallSize * 16, y: wallSize * 11 },
+  { x: wallSize * 19, y: wallSize * 12 },
+  { x: wallSize * 19, y: wallSize * 13 },
+  { x: wallSize * 19, y: wallSize * 14 },
+  { x: wallSize * 19, y: wallSize * 15 },
+  { x: wallSize * 19, y: wallSize * 16 },
+  { x: wallSize * 19, y: wallSize * 17 },
+  { x: wallSize * 19, y: wallSize * 18 },
+  { x: wallSize * 19, y: wallSize * 19 },
+
+  { x: 0, y: wallSize },
+  { x: 0, y: wallSize * 2 },
+  { x: 0, y: wallSize * 3 },
+  { x: 0, y: wallSize * 4 },
+  { x: 0, y: wallSize * 5 },
+  { x: 0, y: wallSize * 6 },
+  { x: 0, y: wallSize * 7 },
+  { x: wallSize, y: wallSize * 7 },
+  { x: wallSize * 2, y: wallSize * 7 },
+  { x: wallSize * 3, y: wallSize * 7 },
+  { x: wallSize, y: wallSize * 8 },
+  { x: wallSize * 2, y: wallSize * 8 },
+  { x: wallSize * 3, y: wallSize * 8 },
+  { x: 0, y: wallSize * 8 },
+  { x: 0, y: wallSize * 10 },
+  { x: wallSize, y: wallSize * 10 },
+  { x: wallSize * 2, y: wallSize * 10 },
+  { x: wallSize * 3, y: wallSize * 10 },
+  { x: 0, y: wallSize * 11 },
+  { x: 0, y: wallSize * 11 },
+  { x: wallSize, y: wallSize * 11 },
+  { x: wallSize * 2, y: wallSize * 11 },
+  { x: wallSize * 3, y: wallSize * 11 },
+  { x: 0, y: wallSize * 12 },
+  { x: 0, y: wallSize * 13 },
+  { x: 0, y: wallSize * 14 },
+  { x: 0, y: wallSize * 15 },
+  { x: 0, y: wallSize * 16 },
+  { x: 0, y: wallSize * 17 },
+  { x: 0, y: wallSize * 18 },
+  { x: 0, y: wallSize * 19 },
+
+  { x: wallSize * 2, y: wallSize * 2 },
+  { x: wallSize * 3, y: wallSize * 2 },
+  { x: wallSize * 2, y: wallSize * 3 },
+  { x: wallSize * 3, y: wallSize * 3 },
+
+  { x: wallSize * 16, y: wallSize * 2 },
+  { x: wallSize * 17, y: wallSize * 2 },
+  { x: wallSize * 16, y: wallSize * 3 },
+  { x: wallSize * 17, y: wallSize * 3 },
+
+  { x: wallSize * 2, y: wallSize * 5 },
+  { x: wallSize * 3, y: wallSize * 5 },
+
+  { x: wallSize * 16, y: wallSize * 5 },
+  { x: wallSize * 17, y: wallSize * 5 },
+
+  { x: wallSize * 5, y: wallSize * 2 },
+  { x: wallSize * 6, y: wallSize * 2 },
+  { x: wallSize * 7, y: wallSize * 2 },
+  { x: wallSize * 7, y: wallSize * 3 },
+
+  { x: wallSize * 14, y: wallSize * 2 },
+  { x: wallSize * 13, y: wallSize * 2 },
+  { x: wallSize * 12, y: wallSize * 2 },
+  { x: wallSize * 12, y: wallSize * 3 },
+
+  { x: wallSize * 5, y: wallSize * 4 },
+  { x: wallSize * 5, y: wallSize * 5 },
+  { x: wallSize * 6, y: wallSize * 5 },
+  { x: wallSize * 7, y: wallSize * 5 },
+  { x: wallSize * 5, y: wallSize * 6 },
+  { x: wallSize * 5, y: wallSize * 7 },
+  { x: wallSize * 5, y: wallSize * 8 },
+
+  { x: wallSize * 9, y: wallSize * 5 },
+  { x: wallSize * 10, y: wallSize * 5 },
+
+  { x: wallSize * 14, y: wallSize * 4 },
+  { x: wallSize * 14, y: wallSize * 5 },
+  { x: wallSize * 13, y: wallSize * 5 },
+  { x: wallSize * 12, y: wallSize * 5 },
+  { x: wallSize * 14, y: wallSize * 6 },
+  { x: wallSize * 14, y: wallSize * 7 },
+  { x: wallSize * 14, y: wallSize * 8 },
+
+  { x: wallSize * 5, y: wallSize * 11 },
+  { x: wallSize * 5, y: wallSize * 10 },
+
+  { x: wallSize * 7, y: wallSize * 11 },
+  { x: wallSize * 8, y: wallSize * 11 },
+  { x: wallSize * 9, y: wallSize * 11 },
+  { x: wallSize * 9, y: wallSize * 12 },
+  { x: wallSize * 9, y: wallSize * 13 },
+  { x: wallSize * 10, y: wallSize * 12 },
+  { x: wallSize * 10, y: wallSize * 13 },
+  { x: wallSize * 10, y: wallSize * 11 },
+  { x: wallSize * 11, y: wallSize * 11 },
+  { x: wallSize * 12, y: wallSize * 11 },
+
+  { x: wallSize * 7, y: wallSize * 15 },
+  { x: wallSize * 8, y: wallSize * 15 },
+  { x: wallSize * 9, y: wallSize * 15 },
+  { x: wallSize * 9, y: wallSize * 16 },
+  { x: wallSize * 9, y: wallSize * 17 },
+  { x: wallSize * 10, y: wallSize * 16 },
+  { x: wallSize * 10, y: wallSize * 17 },
+  { x: wallSize * 10, y: wallSize * 15 },
+  { x: wallSize * 11, y: wallSize * 15 },
+  { x: wallSize * 12, y: wallSize * 15 },
+
+  { x: wallSize * 7, y: wallSize * 17 },
+  { x: wallSize * 6, y: wallSize * 17 },
+  { x: wallSize * 5, y: wallSize * 17 },
+  { x: wallSize * 5, y: wallSize * 16 },
+  { x: wallSize * 5, y: wallSize * 15 },
+  { x: wallSize * 4, y: wallSize * 17 },
+  { x: wallSize * 3, y: wallSize * 17 },
+  { x: wallSize * 2, y: wallSize * 17 },
+
+  { x: wallSize * 12, y: wallSize * 17 },
+  { x: wallSize * 13, y: wallSize * 17 },
+  { x: wallSize * 14, y: wallSize * 17 },
+  { x: wallSize * 14, y: wallSize * 16 },
+  { x: wallSize * 14, y: wallSize * 15 },
+  { x: wallSize * 15, y: wallSize * 17 },
+  { x: wallSize * 16, y: wallSize * 17 },
+  { x: wallSize * 17, y: wallSize * 17 },
+
+  { x: wallSize * 7, y: wallSize * 7 },
+  { x: wallSize * 7, y: wallSize * 8 },
+  { x: wallSize * 7, y: wallSize * 9 },
+  { x: wallSize * 8, y: wallSize * 9 },
+  { x: wallSize * 8, y: wallSize * 7 },
+  { x: wallSize * 9, y: wallSize * 9 },
+  { x: wallSize * 10, y: wallSize * 9 },
+  { x: wallSize * 11, y: wallSize * 7 },
+  { x: wallSize * 11, y: wallSize * 9 },
+  { x: wallSize * 12, y: wallSize * 9 },
+  { x: wallSize * 12, y: wallSize * 8 },
+  { x: wallSize * 12, y: wallSize * 7 },
+
+  { x: wallSize, y: wallSize * 15 },
+
+  { x: wallSize * 18, y: wallSize * 15 },
+
+  { x: wallSize * 5, y: wallSize * 13 },
+  { x: wallSize * 6, y: wallSize * 13 },
+  { x: wallSize * 7, y: wallSize * 13 },
+
+  { x: wallSize * 12, y: wallSize * 13 },
+  { x: wallSize * 13, y: wallSize * 13 },
+  { x: wallSize * 14, y: wallSize * 13 },
+
+  { x: wallSize * 3, y: wallSize * 15 },
+  { x: wallSize * 3, y: wallSize * 14 },
+  { x: wallSize * 3, y: wallSize * 13 },
+  { x: wallSize * 2, y: wallSize * 13 },
+
+  { x: wallSize * 16, y: wallSize * 15 },
+  { x: wallSize * 16, y: wallSize * 14 },
+  { x: wallSize * 16, y: wallSize * 13 },
+  { x: wallSize * 17, y: wallSize * 13 },
+
+  { x: wallSize * 14, y: wallSize * 11 },
+  { x: wallSize * 14, y: wallSize * 10 },
 ];
 
 function sleep(time) {
@@ -76,11 +285,11 @@ function createPacManElement() {
 
 function boundHitDetection(gameContainer) {
   if (pacMan.x + pacMan.width > gameContainer.clientWidth) {
-    pacMan.x = gameContainer.clientWidth - pacMan.width;
+    pacMan.x = 0;
   }
 
   if (pacMan.x < 0) {
-    pacMan.x = 0;
+    pacMan.x = gameContainer.clientWidth - pacMan.width;
   }
 
   if (pacMan.y + pacMan.height > gameContainer.clientHeight) {
