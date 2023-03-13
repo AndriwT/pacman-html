@@ -1,5 +1,5 @@
-//create and render maze
-//maze hit detection
+//create and render maze - DONE
+//maze hit detection - DONE
 //dots
 //score
 //pacMan lives
@@ -22,7 +22,9 @@ let yDirection = 0;
 let SPEED = 10;
 
 let wallSize = 20;
+let dotSpace = 20;
 
+// ------------------------- WALL POSITIONS
 let wallPositions = [
   { x: 0, y: 0 },
   { x: wallSize, y: 0 },
@@ -262,6 +264,29 @@ let wallPositions = [
   { x: wallSize * 14, y: wallSize * 10 },
 ];
 
+let dotPositions = [
+  { x: dotSpace, y: dotSpace },
+  { x: dotSpace * 2, y: dotSpace },
+  { x: dotSpace * 3, y: dotSpace },
+  { x: dotSpace * 4, y: dotSpace },
+  { x: dotSpace * 5, y: dotSpace },
+  { x: dotSpace * 6, y: dotSpace },
+  { x: dotSpace * 7, y: dotSpace },
+  { x: dotSpace * 8, y: dotSpace },
+  { x: dotSpace * 11, y: dotSpace },
+  { x: dotSpace * 12, y: dotSpace },
+  { x: dotSpace * 13, y: dotSpace },
+  { x: dotSpace * 14, y: dotSpace },
+  { x: dotSpace * 15, y: dotSpace },
+  { x: dotSpace * 16, y: dotSpace },
+  { x: dotSpace * 17, y: dotSpace },
+  { x: dotSpace * 18, y: dotSpace },
+  { x: dotSpace * 18, y: dotSpace * 2 },
+
+  //DOT FOR TESTING ----------------
+  { x: 200, y: 280, backgroundColor: "orange" },
+];
+
 function sleep(time) {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -351,48 +376,100 @@ function hitDetectionDifferent() {
   }
 }
 
-function comparePositions(edges1, edges2) {
-  let edgesLeft, edgesRight;
-  edgesLeft = edges1[0] < edges2[0] ? edges1 : edges2;
-  edgesRight = edges1[0] < edges2[0] ? edges2 : edges1;
-  return edgesLeft[1] > edgesRight[0] || edgesLeft[0] === edgesRight[0];
-}
+function dotHitDetection() {
+  for (let i = 0; i < dotPositions.length; i++) {
+    const rightSideInside =
+      pacMan.x + pacMan.width > dotPositions[i].x &&
+      pacMan.x + pacMan.width <= dotPositions[i].x + dotSpace;
 
-function wallHitDetection() {
-  // let pacManLeft = pacMan.x;
-  // let pacManRight = pacMan.x + pacMan.width;
-  // let pacManTop = pacMan.y;
-  // let pacManBottom = pacMan.y + pacMan.height;
+    const bottomSideInside =
+      pacMan.y + pacMan.height > dotPositions[i].y &&
+      pacMan.y + pacMan.height <= dotPositions[i].y + dotSpace;
 
-  for (let i = 0; i < wallPositions.length; i++) {
-    // let wallLeft = wallPositions[i].x;
-    // let wallRight = wallPositions[i].x + wallSize;
-    // let wallTop = wallPositions[i].y;
-    // let wallBottom = wallPositions[i].y + wallSize;
+    const leftSideInside =
+      pacMan.x > dotPositions[i].x && pacMan.x < dotPositions[i].x + dotSpace;
+
+    const topSideInside =
+      pacMan.y > dotPositions[i].y && pacMan.y < dotPositions[i].y + dotSpace;
 
     if (
-      comparePositions([pacManLeft, pacManRight], [wallLeft, wallRight]) &&
-      comparePositions([pacManTop, pacManBottom], [wallTop, wallBottom])
+      (rightSideInside && bottomSideInside) ||
+      (rightSideInside && topSideInside) ||
+      (leftSideInside && bottomSideInside) ||
+      (leftSideInside && topSideInside)
     ) {
-      if (xDirection === 1) {
-        console.log("collided to the right");
-        pacMan.x = wallPositions[i].x - pacMan.width;
-      } else if (xDirection === -1) {
-        console.log("collided to the left");
-        pacMan.x = wallPositions[i].x + wallSize;
-      } else if (yDirection === 1) {
-        console.log("collided at the top");
-        pacMan.y = wallPositions[i].y - pacMan.height;
-      } else if (yDirection === -1) {
-        console.log("collided at the bottom");
-        pacMan.y = wallPositions[i].y + wallSize;
-      }
+      console.log(
+        "COLLIDING",
+        rightSideInside,
+        leftSideInside,
+        bottomSideInside,
+        topSideInside
+      );
+      dotPositions[i].backgroundColor = "";
+      // COLLIDE
+      // if (xDirection === 1) {
+      //   console.log("collided to the right");
+      //   pacMan.x = wallPosition.x - pacMan.width;
+      // } else if (xDirection === -1) {
+      //   console.log("collided to the left");
+      //   pacMan.x = wallPosition.x + wallSize;
+      // } else if (yDirection === 1) {
+      //   console.log("collided at the top");
+      //   pacMan.y = wallPosition.y - pacMan.height;
+      // } else if (yDirection === -1) {
+      //   console.log("collided at the bottom");
+      //   pacMan.y = wallPosition.y + wallSize;
+      // }
 
-      xDirection = 0;
-      yDirection = 0;
+      // xDirection = 0;
+      // yDirection = 0;
     }
   }
 }
+
+// WALL HIT DETECTION OLD - Works but above attempt is better
+// function comparePositions(edges1, edges2) {
+//   let edgesLeft, edgesRight;
+//   edgesLeft = edges1[0] < edges2[0] ? edges1 : edges2;
+//   edgesRight = edges1[0] < edges2[0] ? edges2 : edges1;
+//   return edgesLeft[1] > edgesRight[0] || edgesLeft[0] === edgesRight[0];
+// }
+
+// function wallHitDetection() {
+//   // let pacManLeft = pacMan.x;
+//   // let pacManRight = pacMan.x + pacMan.width;
+//   // let pacManTop = pacMan.y;
+//   // let pacManBottom = pacMan.y + pacMan.height;
+
+//   for (let i = 0; i < wallPositions.length; i++) {
+//     // let wallLeft = wallPositions[i].x;
+//     // let wallRight = wallPositions[i].x + wallSize;
+//     // let wallTop = wallPositions[i].y;
+//     // let wallBottom = wallPositions[i].y + wallSize;
+
+//     if (
+//       comparePositions([pacManLeft, pacManRight], [wallLeft, wallRight]) &&
+//       comparePositions([pacManTop, pacManBottom], [wallTop, wallBottom])
+//     ) {
+//       if (xDirection === 1) {
+//         console.log("collided to the right");
+//         pacMan.x = wallPositions[i].x - pacMan.width;
+//       } else if (xDirection === -1) {
+//         console.log("collided to the left");
+//         pacMan.x = wallPositions[i].x + wallSize;
+//       } else if (yDirection === 1) {
+//         console.log("collided at the top");
+//         pacMan.y = wallPositions[i].y - pacMan.height;
+//       } else if (yDirection === -1) {
+//         console.log("collided at the bottom");
+//         pacMan.y = wallPositions[i].y + wallSize;
+//       }
+
+//       xDirection = 0;
+//       yDirection = 0;
+//     }
+//   }
+// }
 
 function createMaze(gameContainer) {
   for (let i = 0; i < wallPositions.length; i++) {
@@ -408,6 +485,22 @@ function createMaze(gameContainer) {
   }
 }
 
+function createDots(gameContainer) {
+  for (let i = 0; i < dotPositions.length; i++) {
+    const el = document.createElement("div");
+    el.style.position = "absolute";
+    el.style.top = dotPositions[i].y + 7 + "px";
+    el.style.left = dotPositions[i].x + 7 + "px";
+    el.style.height = "5px";
+    el.style.width = "5px";
+    el.style.margin = "0";
+    el.style.backgroundColor = dotPositions[i].backgroundColor;
+    el.style.border = "0px solid black;";
+    el.style.borderRadius = "2.5px";
+    gameContainer.appendChild(el);
+  }
+}
+
 async function main() {
   const gameContainer = document.querySelector("#game");
 
@@ -415,6 +508,7 @@ async function main() {
   gameContainer.appendChild(pacManEl);
 
   createMaze(gameContainer);
+  createDots(gameContainer);
 
   while (true) {
     pacMan.x += SPEED * xDirection;
@@ -422,6 +516,7 @@ async function main() {
 
     boundHitDetection(gameContainer);
     hitDetectionDifferent();
+    dotHitDetection(gameContainer);
 
     pacManEl.style.left = pacMan.x + "px";
     pacManEl.style.top = pacMan.y + "px";
