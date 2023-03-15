@@ -284,7 +284,7 @@ let dotPositions = [
   { x: dotSpace * 18, y: dotSpace * 2 },
 
   //DOT FOR TESTING ----------------
-  { x: 200, y: 280, backgroundColor: "orange" },
+  { x: 200, y: 280 },
 ];
 
 function sleep(time) {
@@ -405,7 +405,9 @@ function dotHitDetection() {
         bottomSideInside,
         topSideInside
       );
-      dotPositions[i].backgroundColor = "";
+      deleteDot(i);
+      // dotPositions[i].x = 0;
+      // dotPositions[i].y = 0;
       // COLLIDE
       // if (xDirection === 1) {
       //   console.log("collided to the right");
@@ -424,6 +426,14 @@ function dotHitDetection() {
       // xDirection = 0;
       // yDirection = 0;
     }
+  }
+}
+
+function deleteDot(idx) {
+  console.log("deleteDot fired!");
+  const el = document.querySelector("#dot-" + idx);
+  if (el) {
+    el.remove();
   }
 }
 
@@ -494,9 +504,10 @@ function createDots(gameContainer) {
     el.style.height = "5px";
     el.style.width = "5px";
     el.style.margin = "0";
-    el.style.backgroundColor = dotPositions[i].backgroundColor;
+    el.style.backgroundColor = "orange";
     el.style.border = "0px solid black;";
     el.style.borderRadius = "2.5px";
+    el.id = "dot-" + i;
     gameContainer.appendChild(el);
   }
 }
